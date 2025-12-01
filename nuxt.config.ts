@@ -12,8 +12,9 @@ export default defineNuxtConfig({
   },
   modules: ["@nuxtjs/tailwindcss", "@nuxtjs/color-mode", "@nuxt/content"],
   nitro: {
-    prerender: {
-      routes: ["/sitemap.xml"],
-    },
+    // Removed prerender routes to avoid trying to prerender /sitemap.xml
+    // prerender: {
+    //   routes: ["/sitemap.xml"],
+    // },
   },
 });

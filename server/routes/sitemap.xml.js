@@ -1,7 +1,8 @@
-import { serverQueryContent } from "#content/server";
-import { SitemapStream, streamToPromise } from "sitemap";
-
 export default defineEventHandler(async (event) => {
+  // dynamically import so the prerender bundler won't treat "#content/server" as an unresolved package import
+  const { serverQueryContent } = await import("#content/server");
+  const { SitemapStream, streamToPromise } = await import("sitemap");
+
   // Fetch all documents
   const docs = await serverQueryContent(event).find();
   const sitemap = new SitemapStream({
